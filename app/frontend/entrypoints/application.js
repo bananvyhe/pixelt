@@ -27,6 +27,38 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
 import { createApp } from 'vue/dist/vue.esm-bundler';
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+
+const customDarkTheme = {
+  dark: true,
+  colors: {
+     background: "#adaada",
+    // background: "#15202b",
+    // surface: "#15202b",
+     
+ 
+    primary: "#3f51b5",
+    secondary: "#03dac6",
+    error: "#ff5722",
+  },
+};
+
+const vuetify = createVuetify({
+  // icons: {
+  //   defaultSet: 'mdi',
+  //   aliases,
+  //   sets: {
+  //     mdi,
+  //   }
+  // },  
+theme: {
+    defaultTheme: 'customDarkTheme',
+    themes: {
+      customDarkTheme
+    }  	
+  }	
+});
 
 // const app = createApp({
 // data() {
@@ -37,5 +69,6 @@ import { createApp } from 'vue/dist/vue.esm-bundler';
 // })  
 import App from '../app.vue'
 const app = createApp(App);
+app.use(vuetify);
 app.mount('#app');
  
