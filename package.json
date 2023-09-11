@@ -10,6 +10,7 @@
   "dependencies": {
     "@vitejs/plugin-vue": "^4.3.4",
     "sass": "^1.66.1",
+    "vite-svg-loader": "^4.0.0",
     "vue": "3.3.4",
     "vuetify": "^3.3.13"
   }

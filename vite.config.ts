@@ -7,6 +7,7 @@ import {
   VuetifyResolver,
 } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
+import svgLoader from 'vite-svg-loader';
 
 export default defineConfig({
   plugins: [
@@ -15,6 +16,7 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
       template: { transformAssetUrls }
     }),
+    svgLoader(),
     vuetify({ 
       autoImport: true,
       treeShake: true,
