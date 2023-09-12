@@ -66,6 +66,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    bcrypt (3.1.19)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
@@ -83,6 +84,9 @@ GEM
     irb (1.8.1)
       rdoc
       reline (>= 0.3.8)
+    jwt (2.7.1)
+    jwt_sessions (3.2.1)
+      jwt (~> 2.6, < 3)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -114,6 +118,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.8)
+    rack-cors (2.0.1)
+      rack (>= 2.0.0)
     rack-proxy (0.7.7)
       rack
     rack-test (2.1.0)
@@ -149,6 +155,7 @@ GEM
     rake (13.0.6)
     rdoc (6.5.0)
       psych (>= 4.0.0)
+    redis (4.5.1)
     reline (0.3.8)
       io-console (~> 0.5)
     sprockets (4.2.1)
@@ -179,10 +186,14 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   debug
+  jwt_sessions
   pg (~> 1.1)
   puma (~> 5.0)
+  rack-cors
   rails (~> 7.0.7, >= 7.0.7.2)
+  redis (< 4.6)
   sprockets-rails
   tzinfo-data
   vite_rails

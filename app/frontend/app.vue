@@ -7,13 +7,13 @@
           <iconUrl/>
         </v-btn>
         <v-spacer></v-spacer>
+        Ruby on Rails + Vue.js
       </v-container>
     </v-app-bar>
   </v-layout>
 </template>
 <script setup lang="ts">
 import iconUrl from './src/svg/baseline-mail-outline.svg?component'
-console.log(iconUrl)
 </script>
 <style scoped>
   
