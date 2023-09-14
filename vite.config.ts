@@ -8,9 +8,11 @@ import {
 } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
 import svgLoader from 'vite-svg-loader';
+import FullReload from 'vite-plugin-full-reload'
 
 export default defineConfig({
   plugins: [
+    FullReload(['config/routes.rb', 'app/views/**/*', 'app/frontend/**/*', 'app/backend/**/*'], { delay: 200 }),
     RubyPlugin(),
     vue({
       include: [/\.vue$/, /\.md$/],
