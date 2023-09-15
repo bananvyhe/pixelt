@@ -26,9 +26,13 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
-import { createApp } from 'vue/dist/vue.esm-bundler';
-import 'vuetify/styles'
-import { createVuetify } from 'vuetify'
+import { createApp, inject } from 'vue/dist/vue.esm-bundler';
+import { createPinia } from 'pinia'
+import App from '../app.vue'
+
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+import { securedAxiosInstance, plainAxiosInstance } from '../backend/axios'
 
 const customDarkTheme = {
   dark: true,
@@ -43,7 +47,8 @@ const customDarkTheme = {
     error: "#ff5722",
   },
 };
-
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
 const vuetify = createVuetify({
   // icons: {
   //   defaultSet: 'mdi',
@@ -67,8 +72,18 @@ theme: {
 //     }  
 //   }  
 // })  
-import App from '../app.vue'
+
+const pinia = createPinia()
 const app = createApp(App);
+app.use(pinia)
+app.use(VueAxios, {
+  secured: securedAxiosInstance,
+  plain: plainAxiosInstance
+})
+
+app.provide('plain', app.config.globalProperties.plain) 
+app.provide('secured', app.config.globalProperties.secured) 
+app.provide('axios', app.config.globalProperties.axios)
 app.use(vuetify);
 app.mount('#app');
  

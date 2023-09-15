@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { useLogStore } from '../../store.js'
-import ls from 'localstorage-slim';  
+// import ls from 'localstorage-slim';  
 // const logStore = useLogStore();
 // const API_URL = window.location.href 
+console.log(window.APP_CONFIG);
 const API_URL = window.APP_CONFIG.apiUrl;
 // const API_URL = 'http://localhost:3000'
 // const API_URL = 'https://farmspot.ru'
