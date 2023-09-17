@@ -71,6 +71,7 @@
       plain
         .post('/signup', { email: email.value, password: password.value, password_confirmation: password_confirmation.value, loa: store.tloa })
           .then((response: { data: any }) => {
+            console.log(response)
             signupSuccessful(response)
           })
           .catch(error => {
