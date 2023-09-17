@@ -28,6 +28,7 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // import '~/index.css'
 import { createApp, inject } from 'vue/dist/vue.esm-bundler';
 import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from '../app.vue'
 
 import axios from 'axios'
@@ -74,6 +75,7 @@ theme: {
 // })  
 
 const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 const app = createApp(App);
 app.use(pinia)
 app.use(VueAxios, {

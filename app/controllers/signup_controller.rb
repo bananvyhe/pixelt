@@ -26,7 +26,7 @@ class SignupController < ApplicationController
                             value: tokens[:access],
                             httponly: true,
                             secure: Rails.env.production?)
-        render json: { csrf: tokens[:csrf], loa: loa }
+        render json: { csrf: tokens[:csrf]}
       else
         render json: { error: user.errors.full_messages.join(' ') }, status: :unprocessable_entity
       end
@@ -38,6 +38,6 @@ class SignupController < ApplicationController
     User.find_by(email: params[:email])
   end
   def user_params
-    params.permit(:email, :password, :password_confirmation, :loa)
+    params.permit(:email, :password, :password_confirmation)
   end
 end

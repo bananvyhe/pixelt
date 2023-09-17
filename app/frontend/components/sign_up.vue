@@ -80,7 +80,6 @@
 
   function signupSuccessful (response) {
     // notify({ title: "Успешная регистрация", type: 'success'});
-    store.unsetLoa()
     secured
     .get('/me')
       .then(meResponse => {
