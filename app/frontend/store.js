@@ -18,7 +18,6 @@ export const useLogStore = defineStore(
       signedIn,
       ctsrf,
       tsignedIn,
-      ttest,
     }
   },
   {
