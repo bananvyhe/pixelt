@@ -2,9 +2,10 @@
   <v-dialog
     transition="dialog-top-transition"
     max-width="600">
-    <template v-slot:activator="{ props }">
+    <template v-slot:activator="{ props }" class="">
       <v-btn
-      size="small"
+        class="mx-1 d-flex align-self-center"
+        size="x-small"
         color="secondary"
         v-bind="props"
         variant="tonal"
@@ -69,7 +70,7 @@
   function signup(){
     console.log("signing up...")
       plain
-        .post('/signup', { email: email.value, password: password.value, password_confirmation: password_confirmation.value, loa: store.tloa })
+        .post('/signup', { email: email.value, password: password.value, password_confirmation: password_confirmation.value })
           .then((response: { data: any }) => {
             console.log(response)
             signupSuccessful(response)

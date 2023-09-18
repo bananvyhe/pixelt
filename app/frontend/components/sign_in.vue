@@ -5,6 +5,7 @@
         max-width="600">
         <template v-slot:activator="{ props }">
           <v-btn
+            class="mx-1"
             size="small"
             color="secondary"
             v-bind="props"
@@ -43,7 +44,7 @@
   // import { useNotification } from "@kyvg/vue3-notification";
   // const { notify}  = useNotification()
   import { ref, computed, inject } from 'vue';
-  import { useLogStore } from '../../store.js' 
+  import { useLogStore } from '../store.js' 
   const plain: any = inject('plain')
   const secured: any = inject('secured')
   const store = useLogStore()
@@ -69,20 +70,20 @@
       // .catch(error => signinFailed(error))
       .then((response: { data: any }) => {
         // console.log(response.data.message)  
+        console.log(response.data.csrf)  
         signinSuccessful(response)
      
       })
       .catch(error => {
-        notify({ title: "Ошибка авторизации", type: 'error', text: error.response.data.message});
+        // notify({ title: "Ошибка авторизации", type: 'error', text: error.response.data.message});
         // console.log(error.response.data.message)          
       })
   }
 
-  function signinSuccessful (response) {
-    notify({ title: "Успешная авторизация", type: 'success'});
-    store.unsetLoa()
+  function signinSuccessful(response) {
+    // notify({ title: "Успешная авторизация", type: 'success'});
     if (!response.data.csrf) {
-      signupFailed(response)
+      signinFailed(response)
       return
     }else{
       console.log("me")
@@ -90,12 +91,13 @@
       .get('/me')
       .then(meResponse => {
         console.log(meResponse.data)
+        console.log(response.data.csrf)
         store.setCurrentUser(meResponse.data, response.data.csrf)
         // this.error = ''
         // this.$router.replace('/')
-        nextTick(() => {
-          router.push({ name: "lobby" });
-        })
+        // nextTick(() => {
+        //   router.push({ name: "lobby" });
+        // })
       })
       .catch(error => console.log(error))
       // this.$router.replace('/')        
