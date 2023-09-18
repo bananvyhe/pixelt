@@ -66,13 +66,8 @@
   function signin () {
     plain
       .post('/signin', { email: email.value, password: password.value })
-      // .then(response => signinSuccessful(response))
-      // .catch(error => signinFailed(error))
-      .then((response: { data: any }) => {
-        // console.log(response.data.message)  
-        console.log(response.data.csrf)  
+      .then((response: { data: any }) => { 
         signinSuccessful(response)
-     
       })
       .catch(error => {
         // notify({ title: "Ошибка авторизации", type: 'error', text: error.response.data.message});
@@ -90,11 +85,7 @@
       secured
       .get('/me')
       .then(meResponse => {
-        console.log(meResponse.data)
-        console.log(response.data.csrf)
         store.setCurrentUser(meResponse.data, response.data.csrf)
-        // this.error = ''
-        // this.$router.replace('/')
         // nextTick(() => {
         //   router.push({ name: "lobby" });
         // })
