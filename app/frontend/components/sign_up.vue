@@ -43,8 +43,8 @@
   
   import { useLogStore } from '../store.js'
   const store = useLogStore()
-  // import { useNotification } from "@kyvg/vue3-notification";
-  // const { notify}  = useNotification()
+  import { useNotification } from "@kyvg/vue3-notification";
+  const { notify}  = useNotification()
   import { ref, reactive, computed, inject } from 'vue';
   const plain: any = inject('plain')
   const secured: any = inject('secured')
@@ -81,7 +81,7 @@
   }
 
   function signupSuccessful (response) {
-    // notify({ title: "Успешная регистрация", type: 'success'});
+    notify({ title: "Успешная регистрация", type: 'success'});
     secured
     .get('/me')
       .then(meResponse => {
@@ -93,7 +93,7 @@
       .catch(error => console.log(error))
   }
   function signupFailed (error) {
-    // notify({ title: "Ошибка при регистрации", type: 'error', text: error.response.data.message});
+    notify({ title: "Ошибка при регистрации", type: 'error', text: error.response.data.message});
     console.log(error)
     console.log("filed")
     store.unsetCurrentUser 

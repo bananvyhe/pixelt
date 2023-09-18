@@ -41,8 +41,8 @@
   // const router = useRouter()
   // const route = useRoute()  
   
-  // import { useNotification } from "@kyvg/vue3-notification";
-  // const { notify}  = useNotification()
+  import { useNotification } from "@kyvg/vue3-notification";
+  const { notify}  = useNotification()
   import { ref, computed, inject } from 'vue';
   import { useLogStore } from '../store.js' 
   const plain: any = inject('plain')
@@ -70,13 +70,13 @@
         signinSuccessful(response)
       })
       .catch(error => {
-        // notify({ title: "Ошибка авторизации", type: 'error', text: error.response.data.message});
+        notify({ title: "Ошибка авторизации", type: 'error', text: error.response.data.message});
         // console.log(error.response.data.message)          
       })
   }
 
   function signinSuccessful(response) {
-    // notify({ title: "Успешная авторизация", type: 'success'});
+    notify({ title: "Успешная авторизация", type: 'success'});
     if (!response.data.csrf) {
       signinFailed(response)
       return

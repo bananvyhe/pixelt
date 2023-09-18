@@ -30,7 +30,7 @@ import { createApp, inject } from 'vue/dist/vue.esm-bundler';
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from '../app.vue'
-
+import Notifications from '@kyvg/vue3-notification'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import { securedAxiosInstance, plainAxiosInstance } from '../backend/axios'
@@ -82,7 +82,7 @@ app.use(VueAxios, {
   secured: securedAxiosInstance,
   plain: plainAxiosInstance
 })
-
+app.use(Notifications)
 app.provide('plain', app.config.globalProperties.plain) 
 app.provide('secured', app.config.globalProperties.secured) 
 app.provide('axios', app.config.globalProperties.axios)

@@ -22,6 +22,19 @@
       </v-container>
     </v-app-bar>
   </v-layout>
+<notifications position="bottom left"  >
+<!--     <template #body="props">
+    <div class="my-notification">
+      <p class="title">
+        {{ props.item.title }}
+      </p>
+      <button class="close" @click="close">
+        <i class="fa fa-fw fa-close"></i>
+      </button>
+      <div v-html="props.item.text"/>
+    </div>
+  </template> -->
+</notifications>  
 </template>
 <script setup lang="ts">
 import iconUrl from './src/svg/baseline-mail-outline.svg?component'
