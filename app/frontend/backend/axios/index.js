@@ -40,12 +40,12 @@ securedAxiosInstance.interceptors.request.use(config => {
 securedAxiosInstance.interceptors.response.use(null, error => {
 
   if (error.response && error.response.config && error.response.status === 401) {
-      const store = ls.get('account').ctsrf
+      // const store = ls.get('account').ctsrf
     const logStore = useLogStore()
     console.log("refresh send")
     console.log(logStore.tctsrf)
     // In case 401 is caused by expired access cookie - we'll do refresh request
-    return plainAxiosInstance.post('/refresh', {}, { headers: { 'X-CSRF-TOKEN': store } })
+    return plainAxiosInstance.post('/refresh', {}, { headers: { 'X-CSRF-TOKEN': logStore.tctsrf } })
       .then(response => {
         console.log("interceptors.response11")
         logStore.setctsrf(response.data.csrf)
