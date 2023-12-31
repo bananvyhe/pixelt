@@ -18,7 +18,11 @@
           <iconUrl/>
         </v-btn>
         <v-spacer></v-spacer>
-        Ruby on Rails + Vue.js
+        <div class="d-flex flex-column ">
+          <div >программирование дизайн</div>
+          <div class="text-caption">Ruby on Rails + Vue.js</div>
+        </div>
+
       </v-container>
     </v-app-bar>
   </v-layout>
